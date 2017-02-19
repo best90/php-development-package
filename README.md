@@ -3,7 +3,8 @@
 收集一些个人比较常用的PHP工具类，欢迎大家来补充！
 
 ### smtp.class.php
-
+ 邮件处理类
+ 
 ### tool.class.php
 1. xml/json/数组数据转化
 2. 发送POST请求
