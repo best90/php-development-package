@@ -1,6 +1,6 @@
 # PHP开发常用工具类
 
-收集一些个人开发过程中比较常用的PHP工具类。
+收集一些个人开发过程中比较常用的PHP工具类。（仅供参考）
 
 ### smtp.class.php
  邮件处理类
@@ -24,4 +24,7 @@
  HTML解析类  操作类似JQuery
 
 ### ipLocation.class.php
- IP 地理位置查询类 
+ IP 地理位置查询类
+
+### excelReader.class.php
+ excel文档读取类
