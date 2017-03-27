@@ -22,3 +22,6 @@
 
 ### phpQuery.class.php
  HTML解析类  操作类似JQuery
+
+### ipLocation.class.php
+ IP 地理位置查询类 
