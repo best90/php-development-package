@@ -17,7 +17,7 @@
 ### curlMulti.class.php
  curl多线程爬虫类
  
-### SimpleCWS.class.php
+### simpleCWS.class.php
  分词类
 
 ### phpQuery.class.php
