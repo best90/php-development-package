@@ -67,7 +67,7 @@ class ipLocation {
      * @access private
      * @return int
      */
-    private function getlong() {
+    private function getLong() {
         //将读取的little-endian编码的4个字节转化为长整型数
         $result = unpack('Vlong', fread($this->fp, 4));
         return $result['long'];
@@ -79,7 +79,7 @@ class ipLocation {
      * @access private
      * @return int
      */
-    private function getlong3() {
+    private function getLong3() {
         //将读取的little-endian编码的3个字节转化为长整型数
         $result = unpack('Vlong', fread($this->fp, 3).chr(0));
         return $result['long'];
@@ -92,7 +92,7 @@ class ipLocation {
      * @param string $ip
      * @return string
      */
-    private function packip($ip) {
+    private function packIp($ip) {
         // 将IP地址转化为长整型数，如果在PHP5中，IP地址错误，则返回False，
         // 这时intval将Flase转化为整数-1，之后压缩成big-endian编码的字符串
         return pack('N', intval(ip2long($ip)));
@@ -105,7 +105,7 @@ class ipLocation {
      * @param string $data
      * @return string
      */
-    private function getstring($data = "") {
+    private function getString($data = "") {
         $char = fread($this->fp, 1);
         while (ord($char) > 0) {        // 字符串按照C格式保存，以\0结束
             $data  .= $char;             // 将读取的字符连接到给定字符串之后
@@ -120,7 +120,7 @@ class ipLocation {
      * @access private
      * @return string
      */
-    private function getarea() {
+    private function getArea() {
         $byte = fread($this->fp, 1);    // 标志字节
         switch (ord($byte)) {
             case 0:                     // 没有区域信息
@@ -145,7 +145,7 @@ class ipLocation {
      * @param string $ip
      * @return array
      */
-    public function getlocation($ip='') {
+    public function getLocation($ip='') {
         if (!$this->fp) return null;            // 如果数据文件没有被正确打开，则直接返回空
 		if(empty($ip)) $ip = get_client_ip();
         $location['ip'] = gethostbyname($ip);   // 将输入的域名转化为IP地址

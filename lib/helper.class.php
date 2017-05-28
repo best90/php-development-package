@@ -24,7 +24,7 @@ class Helper
      * 当前微妙数
      * @return number
      */
-    public static function microtime_float()
+    public static function microtimeFloat()
     {
         list ($usec, $sec) = explode(" ", microtime());
         return (( float )$usec + ( float )$sec);
@@ -35,7 +35,7 @@ class Helper
      * @version v1.0.0
      *
      */
-    public static function truncate_utf8_string($string, $length, $etc = '...')
+    public static function truncateUtf8String($string, $length, $etc = '...')
     {
         $result = '';
         $string = html_entity_decode(trim(strip_tags($string)), ENT_QUOTES, 'UTF-8');
@@ -144,7 +144,7 @@ class Helper
      * @param string $default
      * @return string
      */
-    public static function utf8_gb2312($str, $default = 'gb2312')
+    public static function utf8Orgb2312($str, $default = 'gb2312')
     {
         $str = preg_replace("/[\x01-\x7F]+/", "", $str);
         if (empty($str)) return $default;
@@ -215,27 +215,11 @@ class Helper
     }
 
     /**
-     * 返回二维数组中某个键名的所有值
-     * @param input $array
-     * @param string $key
-     * @return array
-     */
-    public static function array_key_values($array = array(), $key = '')
-    {
-        $ret = array();
-        foreach ((array)$array as $k => $v) {
-            $ret[$k] = $v[$key];
-        }
-        return $ret;
-    }
-
-
-    /**
      * 判断 文件/目录 是否可写（取代系统自带的 is_writeable 函数）
      * @param string $file 文件/目录
      * @return boolean
      */
-    public static function is_writeable($file)
+    public static function isWriteable($file)
     {
         if (is_dir($file)) {
             $dir = $file;
@@ -518,7 +502,7 @@ class Helper
      * 取得输入目录所包含的所有文件
      * 以数组形式返回
      */
-    static public function get_dir_files($dir)
+    static public function getDirFiles($dir)
     {
         if (is_file($dir)) {
             return array($dir);
@@ -545,7 +529,7 @@ class Helper
     /**
      * 删除文件夹及其文件夹下所有文件
      */
-    public static function deldir($dir)
+    public static function delDir($dir)
     {
         //先删除目录下的文件：
         $dh = opendir($dir);
@@ -846,15 +830,6 @@ class Helper
     }
 
     /**
-     * 删除目录
-     * @param string $path
-     */
-    static public function delDir($path)
-    {
-        if (is_dir($path)) rmdir($path);
-    }
-
-    /**
      * 删除目录及地下的全部文件
      * @param string $dir
      * @return bool
@@ -964,7 +939,7 @@ class Helper
      * @param int $startdd 开始标记处
      * @return string
      */
-    static public function cn_substr($str, $slen, $startdd = 0)
+    static public function cnSubstr($str, $slen, $startdd = 0)
     {
         $cfg_soft_lang = PAGECHARSET;
         if ($cfg_soft_lang == 'utf-8') {
@@ -1015,7 +990,7 @@ class Helper
      * @param int $startdd 开始标记处
      * @return string
      */
-    static public function cn_substr_utf8($str, $length, $start = 0)
+    static public function cnSubstrUtf8($str, $length, $start = 0)
     {
         if (strlen($str) < $start + 1) {
             return '';

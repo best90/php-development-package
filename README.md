@@ -8,6 +8,7 @@
 ### tool.class.php
  1. xml/json/数组数据转化
  2. 发送POST请求
+ ...
 
 ### helper.class.php
  1. 目录文件操作
@@ -17,9 +18,6 @@
 ### curlMulti.class.php
  curl多线程爬虫类
  
-### simpleCWS.class.php
- 分词类
-
 ### phpQuery.class.php
  HTML解析类  操作类似JQuery
 

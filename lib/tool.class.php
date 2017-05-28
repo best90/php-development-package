@@ -6,7 +6,7 @@
         * @param $xml  需要转化的xml
         * @return mixed
         */
-        static function xml_to_array($xml)
+        static function xmlToArray($xml)
         {
             $ob = simplexml_load_string($xml);
             $json = json_encode($ob);
@@ -19,7 +19,7 @@
         * @param $data 需要转化的数组
         * @return string
         */
-        static function data_to_xml($data)
+        static function dataToXml($data)
         {
             if (is_object($data)) {
                 $data = get_object_vars($data);
@@ -47,7 +47,7 @@
         * @param $xmlData
         * @return mixed
         */
-        static function xml_post_request($url, $xmlData)
+        static function xmlPostRequest($url, $xmlData)
         {
             $header[] = "Content-type: text/xml";        //定义content-type为xml,注意是数组
             $ch = curl_init($url);
@@ -71,7 +71,7 @@
         * @param $jsonStr 发送的json字符串
         * @return array
         */
-        static function http_post_json($url, $jsonStr)
+        static function httpPostJson($url, $jsonStr)
         {
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_POST, 1);
@@ -147,7 +147,7 @@
         /**
         * 翻译中英文字符串（调换位置）
         */
-        static function m_strrev($string)
+        static function mStrrev($string)
         {
             $num = mb_strlen($string, 'utf-8');
             $new_string = "";
@@ -191,7 +191,7 @@
         * @param $sign     第三方已经机密好的用来比对的字串
         * @return bool
         */
-        static function ValidateSign($param, $sign)
+        static function validateSign($param, $sign)
         {
             if (md5($param) == $sign) {
                 return true;
