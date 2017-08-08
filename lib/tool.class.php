@@ -6,7 +6,7 @@
         * @param $xml  需要转化的xml
         * @return mixed
         */
-        static function xmlToArray($xml)
+        public static function xmlToArray($xml)
         {
             $ob = simplexml_load_string($xml);
             $json = json_encode($ob);
@@ -19,7 +19,7 @@
         * @param $data 需要转化的数组
         * @return string
         */
-        static function dataToXml($data)
+        public static function dataToXml($data)
         {
             if (is_object($data)) {
                 $data = get_object_vars($data);
@@ -47,7 +47,7 @@
         * @param $xmlData
         * @return mixed
         */
-        static function xmlPostRequest($url, $xmlData)
+        public static function xmlPostRequest($url, $xmlData)
         {
             $header[] = "Content-type: text/xml";        //定义content-type为xml,注意是数组
             $ch = curl_init($url);
@@ -71,7 +71,7 @@
         * @param $jsonStr 发送的json字符串
         * @return array
         */
-        static function httpPostJson($url, $jsonStr)
+        public static function httpPostJson($url, $jsonStr)
         {
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_POST, 1);
@@ -96,7 +96,7 @@
         * @return mixed
         * @throws Exception
         */
-        static function httpsPost($url, $param = array())
+        public static function httpsPost($url, $param = array())
         {
             $ch = curl_init(); // 初始化一个 cURL 对象
             curl_setopt($ch, CURLOPT_URL, $url); // 设置需要抓取的URL
@@ -123,7 +123,7 @@
         * 接收xml数据并转化成数组
         * @return array
         */
-        static function getRequestBean()
+        public static function getRequestBean()
         {
             $bean = simplexml_load_string(file_get_contents('php://input')); // simplexml_load_string() 函数把 XML 字符串载入对象中。如果失败，则返回 false。
             $request = array();
@@ -137,7 +137,7 @@
         * 接收json数据并转化成数组
         * @return mixed
         */
-        static function getJsonData()
+        public static function getJsonData()
         {
             $bean = file_get_contents('php://input');
             $result = json_decode($bean, true);
@@ -147,7 +147,7 @@
         /**
         * 翻译中英文字符串（调换位置）
         */
-        static function mStrrev($string)
+        public static function mStrrev($string)
         {
             $num = mb_strlen($string, 'utf-8');
             $new_string = "";
@@ -175,7 +175,7 @@
         * 日志方法
         * @param $log
         */
-        static function writeLog($log)
+        public static function writeLog($log)
         {
             $dir = __DIR__ . "/../Log/";
             if (!is_dir($dir)) {
@@ -191,12 +191,32 @@
         * @param $sign     第三方已经机密好的用来比对的字串
         * @return bool
         */
-        static function validateSign($param, $sign)
+        public static function validateSign($param, $sign)
         {
             if (md5($param) == $sign) {
                 return true;
             } else {
                 return false;
+            }
+        }
+
+
+        /**
+         * 获取301、302真实地址
+         * @param $url
+         * @return mixed
+         */
+        public function parseBaiduUrl($url){
+            sleep(1);
+            $header = get_headers($url,1);
+            if (strpos($header[0],'301') || strpos($header[0],'302')) {
+                if(is_array($header['Location'])) {
+                    return $header['Location'][count($header['Location'])-1];
+                }else{
+                    return $header['Location'];
+                }
+            }else {
+                return $url;
             }
         }
     }
