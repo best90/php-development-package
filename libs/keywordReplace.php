@@ -1,6 +1,6 @@
 <?php
 
-namespace lib;
+namespace libs;
 
 /*
  * 关键词匹配类
