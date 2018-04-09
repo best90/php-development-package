@@ -3,7 +3,6 @@
  * 树型类
  * @author 
  */
-namespace lib;
 class Tree {
     /**
      * 生成树型结构所需的多维数组
